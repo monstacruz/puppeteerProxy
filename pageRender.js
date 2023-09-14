@@ -1,12 +1,12 @@
 const browserSetup = require('./browserSetup.js');
 
-var url = process.argvs[2];
-var encoded_url = process.argvs[3];
-var  harvester_url = process.argvs[4];
-var encoded_harvester_url = process.argvs[5];
-var wait_time = process.argvs[6];
-var json = process.argvs[7];
-var debug = process.argvs[8];
+var url = process.argv[2];
+var encoded_url = process.argv[3];
+var  harvester_url = process.argv[4];
+var encoded_harvester_url = process.argv[5];
+var wait_time = process.argv[6];
+var json = process.argv[7];
+var debug = process.argv[8];
 
 
 async function pageRender(url){
@@ -22,5 +22,5 @@ async function pageRender(url){
 
 
 (async()=>{
-    console.log(await pageRender("https://jobs.northernhealth.ca/JobSearch/s-/0-0-0-0-0-false-0"))
+    console.log(await pageRender(url))
 })();

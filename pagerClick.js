@@ -1,14 +1,16 @@
 const browserSetup = require('./browserSetup.js');
 
-var xpath = process.argvs[2];
-var url = process.argvs[3];
-var start = process.argvs[4];
-var end = process.argvs[5];
-var paging_link = process.argvs[6];
-var paging_link = process.argvs[7];
-var debug = process.argvs[8];
+var xpath = process.argv[2];
+var url = process.argv[3];
+var start = process.argv[4];
+var end = process.argv[5];
+var paging_link = process.argv[6];
+var paging_link = process.argv[7];
+var debug = process.argv[8];
+const pages = end - start;
+var timeout = 1000
 
-async function pagerClick(url, selector, pages, timeout = 1){
+async function pagerClick(url, selector, pages, timeout = 1000){
     const browser = await browserSetup.browserSetup(url);
     const page = browser[0];
     var output = await page.content();
@@ -22,7 +24,7 @@ async function pagerClick(url, selector, pages, timeout = 1){
         await button[0].click();
         //still trying to figure out a better way to wait for the content to load, 
         //so far waituntil does not trigger for both domcontentloaded as well as networkidle0
-        await new Promise(r => setTimeout(r, 2000));
+        await new Promise(r => setTimeout(r, timeout));
         var output = output + await page.content();
     }
 
@@ -33,12 +35,12 @@ async function pagerClick(url, selector, pages, timeout = 1){
 }
 
 
-var url = "https://jobs.northernhealth.ca/JobSearch/s-/0-0-0-0-0-false-0";
-var selector = "//a[contains(., 'Next')]"
-var selector2 = "//*[@id='pagListTop']/span[1]/a[13]"
-var timeout = 3;
-var pages = 3;
+// var url = "https://jobs.northernhealth.ca/JobSearch/s-/0-0-0-0-0-false-0";
+// var selector = "//a[contains(., 'Next')]"
+// var selector2 = "//*[@id='pagListTop']/span[1]/a[13]"
+// var timeout = 3;
+// var pages = 3;
 
 (async()=>{
-    console.log(await pagerClick(url, selector, pages, timeout));
+    console.log(await pagerClick(url, xpath, pages, timeout));
 })();
