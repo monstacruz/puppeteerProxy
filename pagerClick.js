@@ -1,5 +1,13 @@
 const browserSetup = require('./browserSetup.js');
 
+var xpath = process.argvs[2];
+var url = process.argvs[3];
+var start = process.argvs[4];
+var end = process.argvs[5];
+var paging_link = process.argvs[6];
+var paging_link = process.argvs[7];
+var debug = process.argvs[8];
+
 async function pagerClick(url, selector, pages, timeout = 1){
     const browser = await browserSetup.browserSetup(url);
     const page = browser[0];

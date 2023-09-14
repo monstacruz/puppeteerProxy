@@ -1,5 +1,14 @@
 const browserSetup = require('./browserSetup.js');
 
+var click_btn = process.argvs[2];
+var xpath = process.argvs[3];
+var url = process.argvs[4];
+var encoded_url = process.argvs[5];
+var start = process.argvs[6];
+var end = process.argvs[7];
+var paging_link = process.argvs[8];
+var debug = process.argvs[9];
+
 async function initialClick(url, selector, timeout){
     const browser = await browserSetup.browserSetup(url);
     const page = browser[0]
