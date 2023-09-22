@@ -1,4 +1,5 @@
 const browserSetup = require('./browserSetup.js');
+const output = require('./output.js').writeOutput;
 
 var xpath = process.argv[2];
 var url = process.argv[3];
@@ -48,5 +49,5 @@ async function pagerClick(url, selector, start, end, timeout = 1000){
 // var pages = 3;
 
 (async()=>{
-    console.log(await pagerClick(url, xpath, start, end, timeout));
+    output(await pagerClick(url, xpath, start, end, timeout));
 })();

@@ -1,4 +1,5 @@
 const browserSetup = require('./browserSetup.js');
+const output = require('./output.js').writeOutput;
 
 var click_btn = process.argv[2];
 var xpath = process.argv[3];
@@ -31,5 +32,5 @@ async function initialClick(url, xpath, timeout=1000){
 //var selector2 = "//*[@id='pagListTop']/span[1]/a[13]"
 
 (async()=>{
-     console.log(await initialClick(url, xpath));
+     output(await initialClick(url, xpath));
  })();

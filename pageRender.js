@@ -1,4 +1,5 @@
 const browserSetup = require('./browserSetup.js');
+const output = require('./output.js').writeOutput;
 
 var url = process.argv[2];
 var encoded_url = process.argv[3];
@@ -22,5 +23,5 @@ async function pageRender(url){
 
 
 (async()=>{
-    console.log(await pageRender(url))
+    output(await pageRender(url))
 })();
