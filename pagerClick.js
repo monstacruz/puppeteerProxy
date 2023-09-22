@@ -13,14 +13,13 @@ var timeout = 1000
 async function pagerClick(url, selector, start, end, timeout = 1000){
     const browser = await browserSetup.browserSetup(url);
     const page = browser[0];
-    console.log(start + ", " + end);
-    const lastPage = parseInt(end) + 1
-    for(i=1; i < lastPage; i++){
+
+    for(i=1; i < parseInt(end)+1; i++){
 
         //evaluated so that we can actually parse data between specific pages and 
         //not just the difference between start and end
         //this will now parse data from start page to end page whereas before in the old proxy, the amount of pages would be determined by the difference between the start and end values
-        if (i >= start){
+        if (i >= parseInt(start)){
             var output = output + await page.content();
         }
 
